@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<head>
+  <meta charset="utf-8" />
+  <script src="data.set.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.24/jquery-ui.min.js"></script>
+  <script src="../javascripts/fg.menu.js"></script>
+  <script src="../javascripts/autocomplete.flyout.js"></script>
+  <link rel="stylesheet" type="text/css" href="../stylesheets/fg.menu.css">
+  <link rel="stylesheet" type="text/css" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.24/themes/cupertino/jquery-ui.css">
+</head>
+<style>
+  body { padding: 2%; font-family: Arial; }
+  input#test { font-size: 1.0em; }
+</style>
+  <body>
+    <h1>autocomplete-flyout widget</h1>
+    <h2>Either click the dropdown arrow or use autocomplete</h2>
+    <input id="test" size="35" />
+    <p>
+      <code>
+    new AutocompleteFlyout('#test', dataSrc, { width: '300px', flyoutWidth: '300px' });
+      </code>
+    </p>
+
+    <script>
+      new AutocompleteFlyout('#test', dataSrc, { width: '300px', flyoutWidth: '300px' });
+    </script>
+  </body>
+</html>
+
