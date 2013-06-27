@@ -1,5 +1,5 @@
 
-## Autocomplete-flyout widget
+## Autocomplete-flyout web component
 
 ![using-the-flyout](https://github.com/minimul/autocomplete-flyout/raw/master/img/using-the-flyout.png)
 
