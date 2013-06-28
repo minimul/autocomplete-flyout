@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset='utf-8' />
+    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+    <meta name="description" content="Autocomplete-flyout : Web component to either autocomplete or browse through a large data set" />
+
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+
+    <title>Autocomplete-flyout</title>
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/minimul/autocomplete-flyout">View on GitHub</a>
+
+          <h1 id="project_title">Autocomplete-flyout</h1>
+          <h2 id="project_tagline">Web component to either autocomplete or browse through a large data set</h2>
+
+            <section id="downloads">
+              <a class="zip_download_link" href="https://github.com/minimul/autocomplete-flyout/zipball/master">Download this project as a .zip file</a>
+              <a class="tar_download_link" href="https://github.com/minimul/autocomplete-flyout/tarball/master">Download this project as a tar.gz file</a>
+            </section>
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <h2>
+<a name="autocomplete-flyout-web-component" class="anchor" href="#autocomplete-flyout-web-component"><span class="octicon octicon-link"></span></a>Autocomplete-flyout web component</h2>
+
+<p><img src="https://github.com/minimul/autocomplete-flyout/raw/master/img/using-the-flyout.png" alt="using-the-flyout"></p>
+
+<p><img src="https://github.com/minimul/autocomplete-flyout/raw/master/img/using-autocomplete.png" alt="using-autocomplete"></p>
+
+<p>For complex use cases with large datasets in where autocomplete support is desired but also being able to browse the available options via a dropdown button.</p>
+
+<p>Technically, the widget leverages jqueryui (1.8.x) <a href="http://api.jqueryui.com/1.8/autocomplete/">autocomplete</a> and <a href="http://api.jqueryui.com/1.8/button/">button</a> as well as this fork of <a href="https://github.com/minimul/jQuery-Menu">jQuery-Menu</a>.</p>
+
+<h3>
+<a name="getting-started" class="anchor" href="#getting-started"><span class="octicon octicon-link"></span></a>Getting started</h3>
+
+<p>It is best to merely look at the <a href="https://github.com/minimul/autocomplete-flyout/raw/master/examples/index.html">example source code</a> to get up and running quickly.</p>
+
+<h3>
+<a name="minimal-usage" class="anchor" href="#minimal-usage"><span class="octicon octicon-link"></span></a>Minimal usage</h3>
+
+<p>Basic requirements are the dom selection and a valid <a href="http://api.jqueryui.com/1.8/autocomplete/#option-source">jqueryui autocomplete data source</a> with categories defined. See <a href="https://github.com/minimul/autocomplete-flyout/raw/master/examples/data.set.js">demo example</a> for a starting point.</p>
+
+<pre><code>new AutocompleteFlyout('#transaction-chart', dataSrc);
+</code></pre>
+
+<h3>
+<a name="advanced-usage-with-options" class="anchor" href="#advanced-usage-with-options"><span class="octicon octicon-link"></span></a>Advanced usage with options</h3>
+
+<pre><code>new AutocompleteFlyout('#transaction-chart', dataSrc, { width: 300, maxHeight: 100 });
+
+</code></pre>
+
+<h3>
+<a name="options" class="anchor" href="#options"><span class="octicon octicon-link"></span></a>Options</h3>
+
+<table>
+<tr>
+<th>Option</th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+<tr>
+<td>flyoutWidth</td>
+<td>The width of the second level flyout (must be in px e.g. 300px)</td>
+<td>null</td>
+</tr>
+<tr>
+<td>width</td>
+<td>The width of the first-level flyout</td>
+<td>180</td>
+</tr>
+<tr>
+<td>maxHeight</td>
+<td>Max height of flyout</td>
+<td>180</td>
+</tr>
+<tr>
+<td>shiftFlyoutFromTop</td>
+<td>Shift the default top start of the flyout</td>
+<td>0</td>
+</tr>
+<tr>
+<td>onChoosen</td>
+<td>Callback fired when choosing an item</td>
+<td>See below for default</td>
+</tr>
+<tr>
+<td>offsetX</td>
+<td>Shift flyout on x-axis</td>
+<td>0</td>
+</tr>
+<tr>
+<td>offsetY</td>
+<td>Shift flyout on y-axis</td>
+<td>0</td>
+</tr>
+<tr>
+<td>menuName</td>
+<td>Is for fgMenu. If multiple flyouts are being used this must be unique for each one</td>
+<td>hierarchy</td>
+</tr>
+</table><h3>
+<a name="overriding-onchoosen" class="anchor" href="#overriding-onchoosen"><span class="octicon octicon-link"></span></a>Overriding onChoosen</h3>
+
+<p>Below is the default callback function assigned to <code>onChoosen</code>. It simply inserts the selected item into the input field. You can use this example to make a custom solution for your own particular needs.</p>
+
+<pre><code>
+    @options.onChoosen ||=  (item, menu, caller) =&gt;
+                              # Don't set if a category has been clicked
+                              unless item.hasClass('category')
+                                caller.prev().val item.text()
+                                menu.kill()
+
+</code></pre>
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p class="copyright">Autocomplete-flyout maintained by <a href="https://github.com/minimul">minimul</a></p>
+        <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
+      </footer>
+    </div>
+
+    
+
+  </body>
+</html>
